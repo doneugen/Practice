@@ -49,6 +49,7 @@ namespace ConsoleApp2
             Console.Clear();
         }
 
+        //my initial version
         //public static void GetNeighbors(int[,] matrix)
         //{
 
@@ -116,6 +117,7 @@ namespace ConsoleApp2
         //    }
         //}
 
+        //got help
         public static List<List<int>> GetNeighborsNonPrimitive(int[,] matrix)
         {
 
