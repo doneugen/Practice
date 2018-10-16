@@ -8,15 +8,10 @@ namespace ConsoleApp2
         private static void Main(string[] args)
         {
 
-            int[,] initialMatrix = new int[,] {{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-                                               { 0, 0, 1, 0, 0, 0, 0, 1, 1, 1},
-                                               { 1, 1, 1, 0, 0, 0, 0, 0, 0, 0},
-                                               { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                                               { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                                               { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                                               { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                                               { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-                                               { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0}};
+            int[,] initialMatrix = new int[10, 10];
+
+            //Initial board randomized
+            InitializeMatrix(initialMatrix);
 
             while (true)
             {
@@ -29,6 +24,18 @@ namespace ConsoleApp2
             }
         }
 
+        public static void InitializeMatrix(int[,] matrix)
+        {
+            Random randomNum = new Random();
+
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    matrix[i, j] = randomNum.Next(2);
+                }
+            }
+        }
 
         public static void PrintMatrix(int[,] matrix)
         {
