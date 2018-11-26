@@ -1,0 +1,13 @@
+﻿13/11/2018
+
+1. Make the notations configurable via App.Config file (new section or AppSettings)
+2. Separate all places you think needs to be either a model or a class. Be creative!!!
+
+21/11/2018
+
+1. Pattern - decide if it's a model or not, and change it accordingly. (Remember, if I wake you up in the middle of the night, you should be able to
+			 understand it fast.)
+2. Initialization of the printer - where should it be and how should it be done.
+3. Read about Refernces and what it is.
+4. Is .ToCharArray()[0]; the right way to read the notation from the configuration file?
+

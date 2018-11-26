@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-
-
+﻿using System;
+using System.Collections.Generic;
+using System.Threading;
 
 namespace ConsoleApp2
 {
@@ -8,21 +8,19 @@ namespace ConsoleApp2
     {
         private static void Main(string[] args)
         {
-            char deadCellNotation = ' ';
-            char aliveCellNotation = '*';
+            Pattern pattern = new Pattern(new Pattern.PatternSize(20,10));
+            var abc = new ProgramGenerator();
+            abc.RandomPopulatePattern(pattern);
 
-            Matrix matrix = new Matrix(10, 10);
-
-            ////Initial board randomized
-            matrix.Initialize(deadCellNotation, aliveCellNotation);
+            Printer printer = new Printer();
+                       
 
             while (true)
             {
-                matrix.Print();
-
-                List<List<char>> neighbors = matrix.GetNeighboursNonPrimitive();
-
-                matrix.RecalculateMatrix(neighbors, deadCellNotation, aliveCellNotation);
+                printer.PrintPattern(pattern);
+                abc.EvolvePattern(pattern);               
+                Thread.Sleep(500);
+                Console.Clear();
             }
         }
     }
