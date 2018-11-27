@@ -2,11 +2,11 @@
 {
     public class StatusNotations
     {
-        private char _aliveNotation;
-        private char _deadNotation;
+        //private char _aliveNotation;
+       // private char _deadNotation;
 
-        public char AliveCellNotation { get => _aliveNotation; set => _aliveNotation = value; }
-        public char DeadCellNotation { get => _deadNotation; set => _deadNotation = value; }
+        public char AliveCellNotation;// { get => _aliveNotation; set => _aliveNotation = value; }
+        public char DeadCellNotation; //{ get => _deadNotation; set => _deadNotation = value; }
 
 
         public StatusNotations()
@@ -14,7 +14,6 @@
             AliveCellNotation = GetNotationForAliveCell();
             DeadCellNotation = GetNotationForDeadCell();
         }
-
 
         private char GetNotationForAliveCell()
         {

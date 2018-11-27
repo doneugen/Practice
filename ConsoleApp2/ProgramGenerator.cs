@@ -9,7 +9,7 @@ namespace ConsoleApp2
         private Random _randomNum;
         public ProgramGenerator()
         {
-            _randomNum = new Random();
+            this._randomNum = new Random();
         }
 
         public void RandomPopulatePattern(Pattern pattern)
