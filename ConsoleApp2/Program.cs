@@ -8,17 +8,17 @@ namespace ConsoleApp2
     {
         private static void Main(string[] args)
         {
-            Pattern pattern = new Pattern(new Pattern.PatternSize(20,10));
+            Pattern pattern = new Pattern(new Pattern.PatternSize(40));
 
-            var program = new ProgramGenerator();
-            program.RandomPopulatePattern(pattern);
+            var sp25 = new Universe();
+            sp25.InitPattern(pattern);
 
             Printer printer = new Printer();                       
 
             while (true)
             {
                 printer.PrintPattern(pattern);
-                program.EvolvePattern(pattern);               
+                sp25.EvolvePattern(pattern);               
                 Thread.Sleep(250);
                 Console.Clear();
             }

@@ -35,16 +35,16 @@ namespace ConsoleApp2
             {
                 foreach (Cell cell in sublist)
                 {
-                    PrintCell(cell);
+                    PrintCellStatus(cell);
                 }
 
                 PrintNewLine();
             }
         }
 
-        private void PrintCell(Cell cell)
+        private void PrintCellStatus(Cell cell)
         {
-            Console.Write(GetCellNotation(cell).ToString());// + ' ');
+            Console.Write(_notationRepository[cell.Status].ToString());// + ' ');
         }
 
         private void PrintNewLine()
@@ -52,9 +52,6 @@ namespace ConsoleApp2
             Console.WriteLine();
         }
 
-        private char GetCellNotation(Cell cell)
-        {
-            return _notationRepository[cell.Status];
-        }
+        
     }
 }

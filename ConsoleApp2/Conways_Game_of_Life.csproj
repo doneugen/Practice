@@ -46,12 +46,13 @@
   <ItemGroup>
     <Compile Include="Cell.cs" />
     <Compile Include="CellCounter.cs" />
+    <Compile Include="GameRules.cs" />
     <Compile Include="Pattern.cs" />
     <Compile Include="StatusNotation.cs" />
     <Compile Include="Pattern.PatternSize.cs" />
     <Compile Include="Printer.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="ProgramGenerator.cs" />
+    <Compile Include="Universe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Statuses.cs" />
   </ItemGroup>
