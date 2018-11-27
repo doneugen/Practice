@@ -43,65 +43,21 @@ namespace ConsoleApp2
 
         public void EvolvePattern(Pattern pattern)
         {
+            //parse each cell
             for (int i = 0; i < pattern.matrix.Capacity; i++)
             {
                 for (int j = 0; j < pattern.Size.Width; j++)
                 {
-                    byte liveNeighbors = CountCellAliveNeighbors(pattern, i, j);
-                    pattern.matrix[i][j].Status = EvolveCellBasedOnLiveNeighborsAndStatus(liveNeighbors, pattern.matrix[i][j].Status);
+                    CellCounter cellCounter = new CellCounter();
+                    byte aliveNeighbors = cellCounter.CountCellAliveNeighbors(pattern, i, j);
+                    //cell status change based on alive neighbors and status
+                    pattern.matrix[i][j].Status = GetCellStatusBasedOnGameRules(aliveNeighbors, pattern.matrix[i][j].Status);
                 }
             }
-        }
+        }             
 
-        public byte CountCellAliveNeighbors(Pattern pattern, int i, int j)
+        public CellStatuses GetCellStatusBasedOnGameRules(byte numberOfLiveNeighbors, CellStatuses status)
         {
-            List<Cell> neighbors = CountNeighborsForCurrentCell(pattern, i, j);
-            return CountAliveNeighbors(neighbors);
-
-        }
-
-        public List<Cell> CountNeighborsForCurrentCell(Pattern pattern, int i, int j)
-        {
-            List<Cell> neighbors = new List<Cell>();
-
-            for (int a = i - 1; a <= i + 1; a++)
-            {
-                if (a < 0 || a >= pattern.Size.Lenght)
-                {
-                    continue;
-                }
-
-                for (int b = j - 1; b <= j + 1; b++)
-                {
-                    if (b < 0 || b >= pattern.Size.Width)
-                    {
-                        continue;
-                    }
-
-                    if (a != i || b != j)
-                    {
-                        neighbors.Add(pattern.matrix[a][b]);
-                    }
-                }
-            }
-            return neighbors;
-        }
-
-        public byte CountAliveNeighbors(List<Cell> cells)
-        {
-            byte iteration = 0;
-
-            foreach (Cell cell in cells)
-            {
-                if (cell.Status == CellStatuses.Alive)
-                { iteration++; }
-            }
-            return iteration;
-        }
-
-        public CellStatuses EvolveCellBasedOnLiveNeighborsAndStatus(byte numberOfLiveNeighbors, CellStatuses status)
-        {
-
             if (status == CellStatuses.Alive)
             {
                 if (numberOfLiveNeighbors < 2)
