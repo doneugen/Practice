@@ -5,13 +5,23 @@ namespace ConsoleApp2
 {
     public class CellCounter
     {
-        public byte CountCellAliveNeighbors(Pattern pattern, int i, int j)
+        private readonly int _i;
+        private readonly int _j;
+        private readonly Pattern _pattern;
+
+        public CellCounter(int i, int j, Pattern pattern)
         {
-            List<Cell> neighbors = CountCurrentCellNeighbors(pattern, i, j);
-            return CountAliveNeighbors(neighbors);
+            _i = i;
+            _j = j;
+            _pattern = pattern;
         }
 
-        private List<Cell> CountCurrentCellNeighbors(Pattern pattern, int i, int j)
+        public byte CountCellAliveNeighbors()
+        {
+            return CountAliveNeighbors(GetCurrentCellNeighbors(_pattern, _i, _j));
+        }
+
+        private List<Cell> GetCurrentCellNeighbors(Pattern pattern, int i, int j)
         {
             List<Cell> neighbors = new List<Cell>();
             //walk through all cell neighbors
@@ -22,7 +32,7 @@ namespace ConsoleApp2
                 {
                     continue;
                 }
-                
+
                 for (int b = j - 1; b <= j + 1; b++)
                 {
                     //if neighor is outside the matrix

@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp2
 {
-    public class Notations
+    public class StatusNotations
     {
         private char _aliveNotation;
         private char _deadNotation;
@@ -9,7 +9,7 @@
         public char DeadCellNotation { get => _deadNotation; set => _deadNotation = value; }
 
 
-        public Notations()
+        public StatusNotations()
         {
             AliveCellNotation = GetNotationForAliveCell();
             DeadCellNotation = GetNotationForDeadCell();
@@ -18,7 +18,7 @@
 
         private char GetNotationForAliveCell()
         {
-            var appConfigPath = System.Configuration.ConfigurationManager.AppSettings["AliveCell"];
+            var appConfigPath = System.Configuration.ConfigurationManager.AppSettings["AliveCellNotation"];
             if (string.IsNullOrEmpty(appConfigPath))
             {
                 return ' ';
@@ -28,7 +28,7 @@
 
         private char GetNotationForDeadCell()
         {
-            var appConfigPath = System.Configuration.ConfigurationManager.AppSettings["DeadCell"];
+            var appConfigPath = System.Configuration.ConfigurationManager.AppSettings["DeadCellNotation"];
             if (string.IsNullOrEmpty(appConfigPath))
             {
                 return ' ';

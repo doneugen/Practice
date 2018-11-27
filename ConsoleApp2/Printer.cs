@@ -16,46 +16,15 @@ namespace ConsoleApp2
         public void InitNotationRepository()
         {
             //TODO: Think where is the best location to initiate the notationRepository and implement it.
+            StatusNotations notation = new StatusNotations();
+
             _notationRepository = new Dictionary<CellStatuses, char>
             {
-                { CellStatuses.Alive, GetAliveCellNotationFromAppConfig() },
-                { CellStatuses.Dead, GetDeadCellNotationFromAppConfig() }
+                { CellStatuses.Alive, notation.AliveCellNotation},
+                { CellStatuses.Dead, notation.DeadCellNotation}
             };
 
         }
-
-        private char GetAliveCellNotationFromAppConfig()
-        {
-
-            string _appConfigValue = System.Configuration.ConfigurationManager.AppSettings["AliveCellNotation"];
-
-            if (string.IsNullOrEmpty(_appConfigValue))
-            {
-                return ' ';
-            }
-            else
-            {
-                //convert string to char
-                return _appConfigValue.ToCharArray()[0];
-            }
-        }
-
-        private char GetDeadCellNotationFromAppConfig()
-        {
-
-            string _appConfigValue = System.Configuration.ConfigurationManager.AppSettings["DeadCellNotation"];
-
-            if (string.IsNullOrEmpty(_appConfigValue))
-            {
-                return ' ';
-            }
-            else
-            {
-                //convert string to char
-                return _appConfigValue.ToCharArray()[0];
-            }
-        }
-
 
         public void PrintPattern(Pattern pattern)
         {

@@ -48,8 +48,8 @@ namespace ConsoleApp2
             {
                 for (int j = 0; j < pattern.Size.Width; j++)
                 {
-                    CellCounter cellCounter = new CellCounter();
-                    byte aliveNeighbors = cellCounter.CountCellAliveNeighbors(pattern, i, j);
+                    CellCounter cellCounter = new CellCounter(i, j, pattern);
+                    byte aliveNeighbors = cellCounter.CountCellAliveNeighbors();
                     //cell status change based on alive neighbors and status
                     pattern.matrix[i][j].Status = GetCellStatusBasedOnGameRules(aliveNeighbors, pattern.matrix[i][j].Status);
                 }
