@@ -11,14 +11,14 @@ namespace ConsoleApp2
             Pattern pattern = new Pattern(new Pattern.PatternSize(40));
 
             var sp25 = new Universe();
-            sp25.InitPattern(pattern);
+            sp25.Init(pattern);
 
             Printer printer = new Printer();                       
 
             while (true)
             {
                 printer.PrintPattern(pattern);
-                sp25.EvolvePattern(pattern);               
+                sp25.Evolve(pattern);               
                 Thread.Sleep(250);
                 Console.Clear();
             }

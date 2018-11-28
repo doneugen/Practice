@@ -13,7 +13,7 @@ namespace ConsoleApp2
             _randomNum = new Random();
         }
 
-        public void InitPattern(Pattern pattern)
+        public void Init(Pattern pattern)
         {
             //randomly initialize the pattern
             for (int i = 0; i < pattern.matrix.Capacity; i++)
@@ -21,15 +21,15 @@ namespace ConsoleApp2
                 List<Cell> horizontalList = new List<Cell>(pattern.Size.Width);
                 for (int j = 0; j < horizontalList.Capacity; j++)
                 {
-                    Cell cell = new Cell();
-                    cell.SetCellStatus(cell, _randomNum.NextDouble() >= 0.5 ? true : false);
+                    Cell cell = new Cell();                    
+                    cell.Status = RandomBoolValue() ? CellStatuses.Alive : CellStatuses.Dead;
                     horizontalList.Add(cell);
                 }
                 pattern.matrix.Add(horizontalList);
             }
         }
 
-        public void EvolvePattern(Pattern pattern)
+        public void Evolve(Pattern pattern)
         {
             //parse each cell
             for (int i = 0; i < pattern.matrix.Capacity; i++)
@@ -42,5 +42,10 @@ namespace ConsoleApp2
                 }
             }
         }        
+        
+        private bool RandomBoolValue()
+        {
+            return _randomNum.NextDouble() >= 0.5 ? true : false;
+        }
     }
 }
